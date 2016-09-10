@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.trovata.microservices</groupId>
+    <groupId>com.kevjim.microservices</groupId>
     <artifactId>microservices</artifactId>
     <packaging>pom</packaging>
     <version>1.0.0-SNAPSHOT</version>
@@ -469,11 +469,16 @@
         </pluginManagement>
     </build>
 
-    <!-- TODO 
+    <!-- TODO Keep this updated as branching occurs -->
+    <!-- The <url> tag is for a regular browsable URL.
+         A <connection> tag is for read access and <developerConnection> is for write access
+     -->
+    <!-- Example :   http://stackoverflow.com/questions/22625295/maven-scm-plugin-git-ssh-provider-not-found  -->
     <scm>
-        <connection>scm:</connection>
-        <developerConnection>scm:</developerConnection>
+        <url>https://github.com/kbollman/scratchpad</url>
+        <connection>scm:git:ssh://git@git-kevdev:kbollman/scratchpad.git</connection>
+        <developerConnection>scm:git:ssh://git@git-kevdev:kbollman/scratchpad.git</developerConnection>
     </scm>
--->
+
 
 </project>

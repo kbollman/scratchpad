@@ -34,7 +34,7 @@
         <appender-ref ref="console"/>
     </logger>
 
-    <logger name="com.trovata" additivity="false">
+    <logger name="com.kevjim" additivity="false">
         <level value="debug"/>
         <appender-ref ref="file"/>
         <appender-ref ref="console"/>
