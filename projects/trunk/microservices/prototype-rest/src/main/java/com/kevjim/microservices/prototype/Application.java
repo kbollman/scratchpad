@@ -34,7 +34,7 @@ public class Application {
         System.setProperty("spring.config.name", APPLICATION_NAME);
         /**
          * We're setting the spring.application.name to APPLICATION_NAME-Hostname so that when it registers
-         * itself to consul he gets a unique folder name.  This lets us run multiple instances of distops
+         * itself to consul he gets a unique folder name.  This lets us run multiple instances of the application
          * on the same consul backend.   This name can be overrode from the command line if multiple instances are run
          * on the same hostname.
          */
