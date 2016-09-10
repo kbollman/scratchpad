@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash 
 
 if [ $# -lt 3 ]; then
     echo -e "\tUsage: $0 {username} {password} {databasename}"
@@ -7,7 +7,7 @@ fi
 
 user_name=$1
 PGPASSWORD=$2
-datbase_name=$3
+database_name=$3
 
 DB_PATH=`pwd`
 
@@ -22,3 +22,4 @@ psql -U $user_name  -d $database_name -f "${DB_PATH}/public/tables/my_table.sql"
 
 # Reset password variable back to none
 PGPASSWORD=''
+
