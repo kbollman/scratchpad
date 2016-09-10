@@ -12,8 +12,8 @@ Enter it again:
 Password:                    <<Enter password for postgres user>>
 
 2. Create mydatabase
-Note: If mydatabase already exists, drop it (dropdb - Upostgres mydatabase)
-createdb -U myuser mydatabase
+Note: If mydatabase already exists, drop it (dropdb -Upostgres mydatabase)
+createdb -U myuser -W mydatabase
 
 
 ********************************************
@@ -23,3 +23,5 @@ createdb -U myuser mydatabase
 Note: use .sh version for Linux (Windows version shown below)
 
 BuildDatabase.bat myuser mypassword mydatabase
+
+
