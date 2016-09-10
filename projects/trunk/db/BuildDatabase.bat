@@ -11,7 +11,7 @@ psql -U%user_name% -d%database_name% -f"%db_path%\public\code\ins_db_change_trac
 psql -U%user_name% -d%database_name% -f"%db_path%\public\code\is_db_change_required.sql"
 psql -U%user_name% -d%database_name% -f"%db_path%\public\tables\db_change_tracker.sql"
 REM
-REM Staging and Detail Tables
+REM Tables
 psql -U%user_name% -d%database_name% -f"%db_path%\public\tables\my_table.sql"
 REM
 echo off
