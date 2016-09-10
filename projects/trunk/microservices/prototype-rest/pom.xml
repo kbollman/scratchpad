@@ -179,7 +179,7 @@
                 <!--
                 This takes the Spring Bootable artifact from above that IS NOT installed as an artifact
                 and repackages it as a new spring-bootable artifact that is used by
-                distops-installer to create the eventual deployable zip files.
+                installer to create the eventual deployable zip files.
                 -->
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-install-plugin</artifactId>
