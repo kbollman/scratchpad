@@ -78,17 +78,19 @@
             <artifactId>spring-boot-starter-actuator</artifactId>
             <version>${spring.boot.version}</version>
         </dependency>
-        <!--        <dependency>
+
+<!--
+        <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-consul-all</artifactId>
-        </dependency>-->
-        <!--
-                <dependency>
-                    <groupId>com.orbitz.consul</groupId>
-                    <artifactId>consul-client</artifactId>
-                    <version>${orbitz.consul.client}</version>
-                </dependency>
-        -->
+        </dependency>
+        <dependency>
+            <groupId>com.orbitz.consul</groupId>
+            <artifactId>consul-client</artifactId>
+            <version>${orbitz.consul.client}</version>
+        </dependency>
+-->
+
 
         <dependency>
             <groupId>org.springframework.security</groupId>
@@ -161,7 +163,7 @@
                         <artifactId>exec-maven-plugin</artifactId>
                         <groupId>org.codehaus.mojo</groupId>
                         <executions>
-                            <execution><!-- Run our version calculation script -->
+                            <execution><!-- Run our version calculation script and output those markers to a file-->
                                 <id>Version Calculation</id>
                                 <phase>generate-sources</phase>
                                 <goals>
@@ -179,7 +181,7 @@
                         <artifactId>properties-maven-plugin</artifactId>
                         <version>1.0.0</version>
                         <executions>
-                            <execution>
+                            <execution> <!-- Read that key/value property file back in as Maven Properties -->
                                 <id>read-properties</id>
                                 <phase>process-sources</phase>
                                 <goals>
@@ -234,7 +236,7 @@
                 <version>2.4</version>
                 <executions>
                     <execution>
-                        <id>install1</id>
+                        <id>install</id>
                         <phase>package</phase>
                         <goals>
                             <goal>install-file</goal>
@@ -292,6 +294,7 @@
                         </manifest>
                         <manifestEntries>
                             <!--<Subversion-BuildNumber>${buildNumber}</Subversion-BuildNumber>-->
+                            <!-- Populate the GIT variables read in from git_versioning.properties file -->
                             <!--suppress MavenModelInspection -->
                             <GitRevision>${GIT_REVISION}</GitRevision>
                             <!--suppress MavenModelInspection -->
