@@ -4,9 +4,9 @@
     Status can be changed above to troubleshoot issues with the actual log4j2 configuration file
     <Configuration status="debug">
 
-    Spring Boot recommends this file be called spring-log4j2.xml not log4j2.xml
+    TODO Spring Boot recommends this file be called spring-log4j2.xml not log4j2.xml, but I found it not to work
 
-    Examples of Command Line Arguments to relate to this file
+    Examples of Command Line Arguments to relate to this file (TODO but I also found these not to work at our current version)
     log4j.configurationFile	 	Path to an XML or JSON Log4j 2 configuration file. May also contain a comma separated list of configuration file names.
     Examples:
         - -logging.config= # location of logging config file
