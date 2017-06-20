@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration monitorinterval="30" status="info" strict="true">
+    <!--
+    Status can be changed above to troubleshoot issues with the actual log4j2 configuration file
+    <Configuration status="debug">
+
+    TODO Spring Boot recommends this file be called spring-log4j2.xml not log4j2.xml, but I found it not to work
+
+    Examples of Command Line Arguments to relate to this file (TODO but I also found these not to work at our current version)
+    log4j.configurationFile	 	Path to an XML or JSON Log4j 2 configuration file. May also contain a comma separated list of configuration file names.
+    Examples:
+        - -logging.config= # location of logging config file
+        -Dlog4j.configurationFile=file:///c:/Workspace/demo/config/spring-log4j2.xml
+
+    Useful Resources:
+    https://springframework.guru/using-log4j-2-spring-boot/
+    http://andrew-flower.com/blog/Basic_Log4j2_Configuration
+
+    -->
+
+    <Properties>
+        <!--<Property name="LoggingDirectory">log/</Property>-->
+        <!--<Property name="LoggingDirectory">/var/log/trovata/</Property>-->
+        <!-- Can set this system property via -DLOGGING_DIRECTORY=/var/log/trovata/ -->
+        <Property name="LoggingDirectory">${sys:LOGGING_DIRECTORY}</Property>
+
+    </Properties>
+    <Appenders>
+        <RollingFile name="trovata-debug" fileName="${LoggingDirectory}/trovata-debug.log"
+                     filePattern="${LoggingDirectory}/trovata-debug.log.%i">
+            <PatternLayout>
+                <!--<pattern>%d{ISO8601}- %c{1}: %m%n</pattern>-->
+                <pattern>[%d{ISO8601} %-5p %-20.20t %-21.21c{1}] %X{context}%m%n</pattern>
+            </PatternLayout>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="10 KB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="5"/>
+        </RollingFile>
+        <Console name="STDOUT" target="SYSTEM_OUT">
+            <PatternLayout>
+                <!--<pattern>[%d{ISO8601} %-5p %-20.20t %-21.21c{1}] %X{context}%m%n</pattern>-->
+                <pattern>[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n</pattern>
+
+            </PatternLayout>
+        </Console>
+    </Appenders>
+    <Loggers>
+
+        <Logger name="org.springframework.web" level="info" additivity="false">
+            <AppenderRef ref="STDOUT"/>
+            <AppenderRef ref="trovata-debug"/>
+        </Logger>
+
+        <Logger name="org.springframework.retry.support.RetryTemplate" level="debug">
+            <AppenderRef ref="trovata-debug" level="debug"/>
+        </Logger>
+
+        <Logger name="org.springframework.boot.actuate.endpoint.mvc.EndpointHandlerMapping" level="warn">
+            <AppenderRef ref="trovata-debug" level="warn"/>
+        </Logger>
+
+
+        <Logger name="com.trovata" level="debug" additivity="false">
+            <AppenderRef ref="trovata-debug" level="debug"/>
+            <AppenderRef ref="STDOUT"/>
+        </Logger>
+
+        <!--  Some Examples show a root logger, but I'm leaving commented out for now
+        <Logger name="root" level="warn" additivity="false">
+            <appender-ref ref="trovata-debug" level="warn"/>
+        </Logger>
+        -->
+
+        <!--  TODO Example showing info to console vs debug to file, may want to revisit post demo
+        <Root level="debug">
+            <AppenderRef ref="STDOUT" level="info"/>
+            <AppenderRef ref="trovata-debug" level="debug"/>
+        </Root>
+        -->
+        <Root>
+            <AppenderRef ref="STDOUT"/>
+            <AppenderRef ref="trovata-debug"/>
+        </Root>
+    </Loggers>
+</Configuration>
