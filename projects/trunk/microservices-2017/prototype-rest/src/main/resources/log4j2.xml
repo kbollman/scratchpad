@@ -20,14 +20,14 @@
 
     <Properties>
         <!--<Property name="LoggingDirectory">log/</Property>-->
-        <!--<Property name="LoggingDirectory">/var/log/trovata/</Property>-->
-        <!-- Can set this system property via -DLOGGING_DIRECTORY=/var/log/trovata/ -->
+        <!--<Property name="LoggingDirectory">/var/log/kevjim/</Property>-->
+        <!-- Can set this system property via -DLOGGING_DIRECTORY=/var/log/kevjim/ -->
         <Property name="LoggingDirectory">${sys:LOGGING_DIRECTORY}</Property>
 
     </Properties>
     <Appenders>
-        <RollingFile name="trovata-debug" fileName="${LoggingDirectory}/trovata-debug.log"
-                     filePattern="${LoggingDirectory}/trovata-debug.log.%i">
+        <RollingFile name="kevjim-debug" fileName="${LoggingDirectory}/kevjim-debug.log"
+                     filePattern="${LoggingDirectory}/kevjim-debug.log.%i">
             <PatternLayout>
                 <!--<pattern>%d{ISO8601}- %c{1}: %m%n</pattern>-->
                 <pattern>[%d{ISO8601} %-5p %-20.20t %-21.21c{1}] %X{context}%m%n</pattern>
@@ -49,38 +49,38 @@
 
         <Logger name="org.springframework.web" level="info" additivity="false">
             <AppenderRef ref="STDOUT"/>
-            <AppenderRef ref="trovata-debug"/>
+            <AppenderRef ref="kevjim-debug"/>
         </Logger>
 
         <Logger name="org.springframework.retry.support.RetryTemplate" level="debug">
-            <AppenderRef ref="trovata-debug" level="debug"/>
+            <AppenderRef ref="kevjim-debug" level="debug"/>
         </Logger>
 
         <Logger name="org.springframework.boot.actuate.endpoint.mvc.EndpointHandlerMapping" level="warn">
-            <AppenderRef ref="trovata-debug" level="warn"/>
+            <AppenderRef ref="kevjim-debug" level="warn"/>
         </Logger>
 
 
-        <Logger name="com.trovata" level="debug" additivity="false">
-            <AppenderRef ref="trovata-debug" level="debug"/>
+        <Logger name="com.kevjim" level="debug" additivity="false">
+            <AppenderRef ref="kevjim-debug" level="debug"/>
             <AppenderRef ref="STDOUT"/>
         </Logger>
 
         <!--  Some Examples show a root logger, but I'm leaving commented out for now
         <Logger name="root" level="warn" additivity="false">
-            <appender-ref ref="trovata-debug" level="warn"/>
+            <appender-ref ref="kevjim-debug" level="warn"/>
         </Logger>
         -->
 
         <!--  TODO Example showing info to console vs debug to file, may want to revisit post demo
         <Root level="debug">
             <AppenderRef ref="STDOUT" level="info"/>
-            <AppenderRef ref="trovata-debug" level="debug"/>
+            <AppenderRef ref="kevjim-debug" level="debug"/>
         </Root>
         -->
         <Root>
             <AppenderRef ref="STDOUT"/>
-            <AppenderRef ref="trovata-debug"/>
+            <AppenderRef ref="kevjim-debug"/>
         </Root>
     </Loggers>
 </Configuration>

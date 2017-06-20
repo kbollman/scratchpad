@@ -11,6 +11,7 @@
     <name>Microservices 2017</name>
 
     <modules>
+        <module>common-kevjim</module>
         <module>prototype-rest</module>
     </modules>
 
@@ -200,6 +201,12 @@
                 <version>${springVersion}</version>
             </dependency>
 
+            <dependency>
+                <groupId>com.github.ulisesbocchio</groupId>
+                <artifactId>jasypt-spring-boot</artifactId>
+                <version>1.12</version>
+            </dependency>
+
             <!-- Spring Security -->
             <dependency>
                 <groupId>org.springframework.security</groupId>
@@ -225,13 +232,13 @@
             </dependency>
 
             <!-- Hibernate-->
-<!--
-            <dependency>
-                <groupId>org.hibernate</groupId>
-                <artifactId>hibernate-entitymanager</artifactId>
-                <version>${hibernate}</version>
-            </dependency>
--->
+            <!--
+                        <dependency>
+                            <groupId>org.hibernate</groupId>
+                            <artifactId>hibernate-entitymanager</artifactId>
+                            <version>${hibernate}</version>
+                        </dependency>
+            -->
             <dependency>
                 <groupId>org.hibernate</groupId>
                 <artifactId>hibernate-core</artifactId>
@@ -246,6 +253,11 @@
                 <groupId>org.hibernate</groupId>
                 <artifactId>hibernate-commons-annotations</artifactId>
                 <version>${hibernate.commons.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-validator</artifactId>
+                <version>5.4.1.Final</version>
             </dependency>
 
             <dependency>
@@ -278,12 +290,10 @@
                 <scope>test</scope>
             </dependency>
             <dependency>
-                <groupId>postgresql</groupId>
+                <groupId>org.postgresql</groupId>
                 <artifactId>postgresql</artifactId>
-                <version>${postgresql.version}</version>
-                <scope>test</scope>
+                <version>9.4.1212</version>
             </dependency>
-
             <!-- xml -->
             <dependency>
                 <groupId>xerces</groupId>

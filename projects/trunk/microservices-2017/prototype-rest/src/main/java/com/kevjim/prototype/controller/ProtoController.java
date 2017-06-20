@@ -6,14 +6,18 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kevjim.prototype.Application;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
-//import javax.jms.JMSException;
 import java.io.IOException;
 import java.util.*;
 
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import static com.kevjim.common.util.DateUtils.convertEpochToDate;
+
+//import javax.jms.JMSException;
 
 
 //@CrossOrigin
@@ -38,6 +42,12 @@ public class ProtoController extends WebSecurityConfigurerAdapter {
     public List<String> getPreferredLocale() {
         return Arrays.asList(EN);
     }
+
+    @RequestMapping(value = "/utilTest", method = RequestMethod.GET)
+    public String utilTest() {
+        return String.format("Util Test for %s at %s", this.getClass().getSimpleName(), convertEpochToDate(1497998516));
+    }
+
 
     /**
      * This returns Version information that could be useful in troubleshooting the application.
