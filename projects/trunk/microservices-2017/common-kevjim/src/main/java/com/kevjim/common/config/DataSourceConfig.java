@@ -17,6 +17,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
+import org.springframework.orm.hibernate5.HibernateTemplate;
 
 import javax.sql.DataSource;
 import java.util.Properties;
@@ -34,7 +35,7 @@ public class DataSourceConfig {
     /**
      * These will eventually be pulled in from file or Consul, but for dev simplicity, here for now.
      */
-    private static final String KEY_ENTITIES_PKG = "com.kevjim.model";
+    private static final String KEY_ENTITIES_PKG = "com.kevjim.common.model";
     private static final String KEY_HIBERNATE_SHOW_SQL = "true";
     private static final String KEY_HIBERNATE_DIALECT = "org.hibernate.dialect.PostgreSQLDialect";
     private static final String KEY_DRIVER_CLASS = "org.postgresql.Driver";
@@ -42,7 +43,7 @@ public class DataSourceConfig {
     private static final String KEY_DATABASE_NAME = "mydatabase";
     private static final String KEY_JDBC_URL = "jdbc:postgresql://" + KEY_HOSTNAME + ":5432/" + KEY_DATABASE_NAME;
     private static final String KEY_JDBC_USERNAME = "myuser";
-    //private static final String KEY_JDBC_PASSWORD = "mypassword";
+    private static final String KEY_JDBC_PASSWORD = "mypassword";
 
     // Notice that the bean name is required, as jasypt-spring-boot detects custom String Encyptors by name
     // Leaving commented for now just to show how we could do a custom Encryptor if desired higher level of encryption
@@ -77,7 +78,7 @@ public class DataSourceConfig {
         dataSource.setDriverClassName(KEY_DRIVER_CLASS);
         dataSource.setUrl(KEY_JDBC_URL);
         dataSource.setUsername(KEY_JDBC_USERNAME);
-        dataSource.setPassword(environment.getProperty("jdbc.password"));
+        dataSource.setPassword(KEY_JDBC_PASSWORD);
         dataSource.setDefaultAutoCommit(Boolean.TRUE);
         return dataSource;
     }
@@ -93,10 +94,16 @@ public class DataSourceConfig {
     }
 
     @Bean
-    @Autowired
+    //@Autowired
     public HibernateTransactionManager transactionManager(
             SessionFactory sessionFactory) {
         logger.debug("In Bean creation for HibernateTransactionManager");
         return new HibernateTransactionManager(sessionFactory);
+    }
+
+    @Bean
+    public HibernateTemplate hibernateTemplate(SessionFactory sessionFactory) {
+        logger.debug("In Bean creation for HibernateTemplate");
+        return new HibernateTemplate(sessionFactory);
     }
 }
