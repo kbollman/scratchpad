@@ -14,6 +14,7 @@ import java.io.Serializable;
 public class MyTable implements Serializable {
     private long myTableId;
     private String myTableColumnA;
+    private Boolean myTableColumnB;
 
     public MyTable() {
         // Default constructor
@@ -41,5 +42,14 @@ public class MyTable implements Serializable {
 
     public void setMyTableColumnA(String myTableColumnA) {
         this.myTableColumnA = myTableColumnA;
+    }
+
+    @Column(name = "my_table_column_b", nullable = false)
+    public Boolean getMyTableColumnB() {
+        return myTableColumnB;
+    }
+
+    public void setMyTableColumnB(Boolean myTableColumnB) {
+        this.myTableColumnB = myTableColumnB;
     }
 }
