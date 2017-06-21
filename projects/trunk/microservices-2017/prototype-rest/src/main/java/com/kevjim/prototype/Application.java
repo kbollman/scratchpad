@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 //import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
 import org.springframework.context.ConfigurableApplicationContext;
 
 import java.io.IOException;
@@ -19,7 +20,7 @@ import java.util.Properties;
 import java.util.jar.JarFile;
 
 //@EnableDiscoveryClient
-@SpringBootApplication
+@SpringBootApplication( exclude = HibernateJpaAutoConfiguration.class)
 public class Application {
 
     private static final String APPLICATION_NAME = "proto";

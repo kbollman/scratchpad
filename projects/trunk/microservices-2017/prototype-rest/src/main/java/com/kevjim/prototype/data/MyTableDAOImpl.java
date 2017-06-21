@@ -2,7 +2,7 @@ package com.kevjim.prototype.data;
 
 import com.kevjim.common.model.MyTable;
 import org.hibernate.Session;
-import org.springframework.orm.hibernate4.HibernateCallback;
+import org.springframework.orm.hibernate5.HibernateCallback;
 import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.TransactionCallbackWithoutResult;
 
