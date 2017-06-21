@@ -73,7 +73,7 @@
         <dependency>
             <groupId>org.springframework.retry</groupId>
             <artifactId>spring-retry</artifactId>
-            <version>1.1.5.RELEASE</version>
+            <version>${springRetry}</version>
         </dependency>
 
         <dependency>
