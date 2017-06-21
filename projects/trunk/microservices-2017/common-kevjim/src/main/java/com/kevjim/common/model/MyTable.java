@@ -44,7 +44,7 @@ public class MyTable implements Serializable {
         this.myTableColumnA = myTableColumnA;
     }
 
-    @Column(name = "my_table_column_b", nullable = false)
+    @Column(name = "my_table_column_b", nullable = true)
     public Boolean getMyTableColumnB() {
         return myTableColumnB;
     }
