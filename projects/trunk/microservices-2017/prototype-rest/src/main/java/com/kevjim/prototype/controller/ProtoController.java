@@ -55,11 +55,19 @@ public class ProtoController extends WebSecurityConfigurerAdapter {
         return String.format("Util Test for %s at %s", this.getClass().getSimpleName(), convertEpochToDate(1497998516));
     }
 
+    // curl -sS 'http://localhost:8080/getmytablecolumna?myTableId=1'
     @RequestMapping(value = "/getmytablecolumna", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public String getMyTableColumnA(@RequestParam(required = true) long myTableId) {
         return myTableDAO.getMyTableColumnA(myTableId);
     }
 
+    // curl -sS 'http://localhost:8080/getmytable?myTableId=1
+    @RequestMapping(value = "/getmytable", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public MyTable getMyTable(@RequestParam(required = true) long myTableId) {
+        return myTableDAO.getMyTable(myTableId);
+    }
+
+    // curl -X POST   http://localhost:8080/addmytablerow   -H 'cache-control: no-cache'   -H 'content-type: application/json'   -H 'postman-token: 70e5e6f6-aebf-7a2b-9f66-d5d07e0a4031'   -d '{"myTableId":100,"myTableColumnA":"aaa","myTableColumnB":true}'
     @RequestMapping(value = "/addmytablerow", method = RequestMethod.POST)
     public void addMyTableRow(@RequestBody MyTable myTable) {
         myTableDAO.addRow(myTable);

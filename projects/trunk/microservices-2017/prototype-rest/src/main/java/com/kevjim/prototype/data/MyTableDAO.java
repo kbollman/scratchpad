@@ -21,4 +21,10 @@ public interface MyTableDAO {
      * @return myTableColumnA for the myTableId passed in
      */
     String getMyTableColumnA(long myTableId);
+
+    /**
+     * Retrives Table
+     */
+    MyTable getMyTable(long myTableId);
+
 }

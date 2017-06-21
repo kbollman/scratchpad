@@ -51,4 +51,24 @@ public class MyTableDAOImpl extends AbstractDAO implements MyTableDAO {
             throw e;
         }
     }
+
+    @Override
+    public MyTable getMyTable(long myTableId) {
+        try {
+            MyTable myTable = (MyTable) hibernateTemplate.execute(new HibernateCallback<Object>() {
+                public Object doInHibernate(Session session) {
+                    return (MyTable) session
+                            .createQuery("from " + MyTable.class.getName() + " where myTableId = :myTableId")
+                            .setParameter("myTableId", myTableId)
+                            .setReadOnly(true)
+                            .list().get(0);
+                }
+            });
+            return myTable;
+
+        } catch (Exception e) {
+            logger.error("Error getting MyTableColumnA name, error = ", e);
+            throw e;
+        }
+    }
 }
