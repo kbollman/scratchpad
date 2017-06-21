@@ -1,26 +1,26 @@
 package com.kevjim.common.config;
 
 
-import com.ulisesbocchio.jasyptspringboot.annotation.EnableEncryptableProperties;
 import org.apache.commons.dbcp.BasicDataSource;
 import org.hibernate.SessionFactory;
-import org.jasypt.encryption.StringEncryptor;
-import org.jasypt.encryption.pbe.PooledPBEStringEncryptor;
-import org.jasypt.encryption.pbe.config.SimpleStringPBEConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.DependsOn;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
+import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
-import org.springframework.orm.hibernate5.HibernateTemplate;
 
 import javax.sql.DataSource;
 import java.util.Properties;
+
+//import com.ulisesbocchio.jasyptspringboot.annotation.EnableEncryptableProperties;
+//import org.jasypt.encryption.StringEncryptor;
+//import org.jasypt.encryption.pbe.PooledPBEStringEncryptor;
+//import org.jasypt.encryption.pbe.config.SimpleStringPBEConfig;
 
 @Configuration
 //@EnableEncryptableProperties
@@ -94,7 +94,6 @@ public class DataSourceConfig {
     }
 
     @Bean
-    //@Autowired
     public HibernateTransactionManager transactionManager(
             SessionFactory sessionFactory) {
         logger.debug("In Bean creation for HibernateTransactionManager");
