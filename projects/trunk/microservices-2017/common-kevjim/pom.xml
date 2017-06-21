@@ -58,7 +58,7 @@
         </dependency>
 
         <!-- Hibernate -->
-        <!--
+        <!-- TODO DO we want to change any hibernate stuff? -->
         <dependency>
             <groupId>commons-dbcp</groupId>
             <artifactId>commons-dbcp</artifactId>
@@ -89,8 +89,6 @@
             <groupId>com.github.ulisesbocchio</groupId>
             <artifactId>jasypt-spring-boot</artifactId>
         </dependency>
-        -->
-
 
         <!-- Spring -->
         <dependency>
